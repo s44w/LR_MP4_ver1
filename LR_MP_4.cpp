@@ -7,6 +7,10 @@ using namespace std;
 
 vector <char> input_name()
 {
+	/*
+	Функция, через массив char вводит в вектор текст, заданный пользователем
+	Выводит: data: vector <char> 
+	*/
 	char buffer[100];
 	vector <char> data;
 	
@@ -20,6 +24,11 @@ vector <char> input_name()
 int i = 0;
 ifstream file_choose()
 {
+	/*
+	Функция, проверяет ввод пользователя на "правильность" (т.к. названия файлов заданы заранее)
+	Выводит: 
+		text: ifstream - поток ввода, с которым работаем далее
+	*/
 	vector <char> data;
 	bool ok = true;
 	
@@ -59,6 +68,11 @@ ifstream file_choose()
 }
 ofstream ofstr_file()
 {
+	/*
+	Функция, в зависимости выбирает файл в заваисимости от глобальной переменной
+	Выводит:
+		text: ofstream - поток вывода 
+	*/
 	bool ok = true;
 	while (ok)
 	{
@@ -84,8 +98,15 @@ ofstream ofstr_file()
 }
 
 
-vector <char> file_reading(ifstream& file)
+vector <char> file_reading(ifstream& file)  
 {
+	/*
+	Функция, читает содержимое файла и переносит его в вектор char пока не натыкается на EOF
+	Аргументы:
+		file: ifstream& - ссылка на поток ввода
+	Выводит:
+		data: vector <char> - вектор текста из файла
+	*/
 	vector < char > data;
 	char symb;
 	while ((symb = file.get()) != EOF)
@@ -95,7 +116,7 @@ vector <char> file_reading(ifstream& file)
 	return data;
 }
 
-void output(vector <char>& data)
+void output(vector <char>& data) //выводим данные из файла
 {
 	cout << "Your text is: " << endl;
 	for (int i = 0; i < data.size(); ++i) {
@@ -103,7 +124,7 @@ void output(vector <char>& data)
 	}
 }
 
-pair <int, int> calculations(vector <char>& data)
+pair <int, int> calculations(vector <char>& data) //считаем символы
 {
 	int upper_count = 0, lower_count = 0;
 	for (auto c : data)
